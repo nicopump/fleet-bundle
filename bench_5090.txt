@@ -1,0 +1,58 @@
+== sistema
+name, compute_cap, clocks.max.sm [MHz], power.limit [W], driver_version
+NVIDIA GeForce RTX 5090, 12.0, 3090 MHz, 575.00 W, 595.84
+Cuda compilation tools, release 12.8, V12.8.93
+Build cuda_12.8.r12.8/compiler.35583870_0
+CPU(s):                                  512
+Model name:                              AMD Eng Sample: 100-000000946-01
+== build
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+build per sm_120
+ptxas info    : Used 64 registers, used 0 barriers
+ptxas info    : Used 64 registers, used 1 barriers
+ptxas info    : Used 78 registers, used 0 barriers
+== correttezza
+job 0: GPU 1 / CPU 1 soluzioni nei primi 2^21 nonce
+job 1: GPU 3 / CPU 3 soluzioni nei primi 2^21 nonce
+job 2: GPU 4 / CPU 4 soluzioni nei primi 2^21 nonce
+job 3: GPU 2 / CPU 2 soluzioni nei primi 2^21 nonce
+SELFTEST OK: 10 soluzioni corrette, 0 errori
+n=0 gpu=efbe0a67dc882b34 cpu=efbe0a67dc882b34
+n=1 gpu=a762688cdbbdc69c cpu=a762688cdbbdc69c
+n=2 gpu=8422984b791b88fc cpu=8422984b791b88fc
+n=3 gpu=b132fbfd094f3902 cpu=b132fbfd094f3902
+== pipe (istruzioni per clock per SM)
+LOP3                                 63.6 elem/clk/SM     63.6 istr/clk/SM
+SHF                                  63.6 elem/clk/SM     63.6 istr/clk/SM
+IMAD                                 63.8 elem/clk/SM     63.8 istr/clk/SM
+rot32 via IMAD.SHL+IMAD.HI           21.0 elem/clk/SM     41.9 istr/clk/SM
+mix LOP3 + rot32-IMAD (1:1)          36.1 elem/clk/SM     54.2 istr/clk/SM
+mix LOP3 + IMAD (1:1)                98.6 elem/clk/SM     98.6 istr/clk/SM
+mix LOP3 + SHF (11:5, come keccak)   62.5 elem/clk/SM     62.5 istr/clk/SM
+LOP3                                 63.6 elem/clk/SM     63.6 istr/clk/SM
+SHF                                  63.6 elem/clk/SM     63.6 istr/clk/SM
+IMAD                                 63.8 elem/clk/SM     63.8 istr/clk/SM
+rot32 via IMAD.SHL+IMAD.HI           21.0 elem/clk/SM     41.9 istr/clk/SM
+mix LOP3 + rot32-IMAD (1:1)          36.1 elem/clk/SM     54.2 istr/clk/SM
+mix LOP3 + IMAD (1:1)                98.6 elem/clk/SM     98.6 istr/clk/SM
+mix LOP3 + SHF (11:5, come keccak)   62.5 elem/clk/SM     62.5 istr/clk/SM
+== hash per clock per SM, per configurazione di lancio (tpb bpsm)
+128 16: 0.01631 hash/clk/SM   reale 7695.4 MH/s a 2776 MHz effettivi   (170 SM)
+256 8: 0.01634 hash/clk/SM   reale 7711.7 MH/s a 2776 MHz effettivi   (170 SM)
+64 32: 0.01631 hash/clk/SM   reale 7693.7 MH/s a 2775 MHz effettivi   (170 SM)
+256 4: 0.01634 hash/clk/SM   reale 7707.9 MH/s a 2775 MHz effettivi   (170 SM)
+128 8: 0.01629 hash/clk/SM   reale 7678.6 MH/s a 2773 MHz effettivi   (170 SM)
+== carico sostenuto 180 s (clock MHz, potenza, temperatura, motivi di rallentamento)
+2760 MHz, 483.02 W, 64, 0x0000000000000000
+2760 MHz, 498.06 W, 71, 0x0000000000000000
+2745 MHz, 510.78 W, 76, 0x0000000000000000
+2745 MHz, 523.80 W, 79, 0x0000000000000000
+2737 MHz, 531.81 W, 81, 0x0000000000000000
+2737 MHz, 535.52 W, 81, 0x0000000000000004
+2737 MHz, 535.67 W, 81, 0x0000000000000004
+2737 MHz, 535.75 W, 81, 0x0000000000000004
+2737 MHz, 536.16 W, 81, 0x0000000000000004
+2737 MHz, 536.44 W, 81, 0x0000000000000004
+2737 MHz, 537.08 W, 81, 0x0000000000000004
+STATUS: totale 7610.7 MH/s in 180 s (GPU 7610.7 MH/s)
+2820 MHz, 135.68 W, 64, 0x0000000000000000

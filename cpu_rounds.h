@@ -1,0 +1,66 @@
+// File generato da gen_rounds.py - non modificare a mano
+#pragma once
+
+#define CPU_ROUND(rc) \
+    c0 = XV(XV(XV(a00, a05), XV(a10, a15)), a20); \
+    c1 = XV(XV(XV(a01, a06), XV(a11, a16)), a21); \
+    c2 = XV(XV(XV(a02, a07), XV(a12, a17)), a22); \
+    c3 = XV(XV(XV(a03, a08), XV(a13, a18)), a23); \
+    c4 = XV(XV(XV(a04, a09), XV(a14, a19)), a24); \
+    d0 = XV(c4, rol<1>(c1)); \
+    d1 = XV(c0, rol<1>(c2)); \
+    d2 = XV(c1, rol<1>(c3)); \
+    d3 = XV(c2, rol<1>(c4)); \
+    d4 = XV(c3, rol<1>(c0)); \
+    b00 = XV(a00, d0); \
+    b10 = rol<1>(XV(a01, d1)); \
+    b20 = rol<62>(XV(a02, d2)); \
+    b05 = rol<28>(XV(a03, d3)); \
+    b15 = rol<27>(XV(a04, d4)); \
+    b16 = rol<36>(XV(a05, d0)); \
+    b01 = rol<44>(XV(a06, d1)); \
+    b11 = rol<6>(XV(a07, d2)); \
+    b21 = rol<55>(XV(a08, d3)); \
+    b06 = rol<20>(XV(a09, d4)); \
+    b07 = rol<3>(XV(a10, d0)); \
+    b17 = rol<10>(XV(a11, d1)); \
+    b02 = rol<43>(XV(a12, d2)); \
+    b12 = rol<25>(XV(a13, d3)); \
+    b22 = rol<39>(XV(a14, d4)); \
+    b23 = rol<41>(XV(a15, d0)); \
+    b08 = rol<45>(XV(a16, d1)); \
+    b18 = rol<15>(XV(a17, d2)); \
+    b03 = rol<21>(XV(a18, d3)); \
+    b13 = rol<8>(XV(a19, d4)); \
+    b14 = rol<18>(XV(a20, d0)); \
+    b24 = rol<2>(XV(a21, d1)); \
+    b09 = rol<61>(XV(a22, d2)); \
+    b19 = rol<56>(XV(a23, d3)); \
+    b04 = rol<14>(XV(a24, d4)); \
+    a00 = XV(b00, _mm256_andnot_si256(b01, b02)); \
+    a01 = XV(b01, _mm256_andnot_si256(b02, b03)); \
+    a02 = XV(b02, _mm256_andnot_si256(b03, b04)); \
+    a03 = XV(b03, _mm256_andnot_si256(b04, b00)); \
+    a04 = XV(b04, _mm256_andnot_si256(b00, b01)); \
+    a05 = XV(b05, _mm256_andnot_si256(b06, b07)); \
+    a06 = XV(b06, _mm256_andnot_si256(b07, b08)); \
+    a07 = XV(b07, _mm256_andnot_si256(b08, b09)); \
+    a08 = XV(b08, _mm256_andnot_si256(b09, b05)); \
+    a09 = XV(b09, _mm256_andnot_si256(b05, b06)); \
+    a10 = XV(b10, _mm256_andnot_si256(b11, b12)); \
+    a11 = XV(b11, _mm256_andnot_si256(b12, b13)); \
+    a12 = XV(b12, _mm256_andnot_si256(b13, b14)); \
+    a13 = XV(b13, _mm256_andnot_si256(b14, b10)); \
+    a14 = XV(b14, _mm256_andnot_si256(b10, b11)); \
+    a15 = XV(b15, _mm256_andnot_si256(b16, b17)); \
+    a16 = XV(b16, _mm256_andnot_si256(b17, b18)); \
+    a17 = XV(b17, _mm256_andnot_si256(b18, b19)); \
+    a18 = XV(b18, _mm256_andnot_si256(b19, b15)); \
+    a19 = XV(b19, _mm256_andnot_si256(b15, b16)); \
+    a20 = XV(b20, _mm256_andnot_si256(b21, b22)); \
+    a21 = XV(b21, _mm256_andnot_si256(b22, b23)); \
+    a22 = XV(b22, _mm256_andnot_si256(b23, b24)); \
+    a23 = XV(b23, _mm256_andnot_si256(b24, b20)); \
+    a24 = XV(b24, _mm256_andnot_si256(b20, b21)); \
+    a00 = XV(a00, _mm256_set1_epi64x((long long)rc));
+
